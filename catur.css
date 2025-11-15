@@ -1,0 +1,265 @@
+/* === CSS VARIABLES === */
+:root {
+    --primary-color: #004B8D;
+    --secondary-color: #f4f4f4; 
+    --accent-color: #b8860b;
+    --text-color: #333;
+    --light-text: #fff;
+    --border-color: #ddd;
+}
+
+/* === RESET & GLOBAL === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #fff;
+    /* Beri padding atas agar konten tidak tertutup header-wrapper */
+    /* Sesuaikan 190px ini = (tinggi header + tinggi nav) */
+    padding-top: 190px; 
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--accent-color);
+    display: inline-block;
+}
+
+section {
+    padding: 3rem 0;
+    text-align: center;
+}
+
+/* === HEADER & NAVIGASI === */
+.header-wrapper {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    transition: top 0.4s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* State saat header disembunyikan */
+.header-wrapper.header-hidden {
+    top: -250px; /* Sembunyikan sepenuhnya */
+}
+
+/* Bagian Banner Gambar */
+header {
+    /* GANTI NAMA FILE GAMBAR DI SINI */
+    background-image: url('Header.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Atur tinggi banner Anda */
+    min-height: 140px; 
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Bagian Menu Navigasi */
+nav {
+    background-color: #ffffff; /* Background putih untuk nav */
+    width: 100%;
+}
+
+nav .container {
+    padding: 0.5rem 0; /* Padding kecil atas/bawah untuk nav */
+    display: flex;
+    justify-content: center; /* Menu di tengah */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    color: var(--text-color); /* Teks menu warna gelap */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem; /* Jarak antar item menu */
+    display: block;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color); /* Efek hover warna emas */
+}
+
+
+/* === SECTION 1: BERITA TERKINI (Grid Layout) === */
+#berita-terkini {
+    background-color: var(--secondary-color);
+}
+
+.berita-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.berita-item {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.berita-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.berita-item h3 {
+    color: var(--accent-color);
+}
+
+.berita-item a {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.berita-item a:hover {
+    text-decoration: underline;
+}
+
+/* === SECTION 2: RIWAYAT TURNAMEN (Accordion) === */
+.turnamen-list {
+    list-style: none;
+    max-width: 700px;
+    margin: 2rem auto 0;
+    text-align: left;
+}
+
+.turnamen-item {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.turnamen-toggle {
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.turnamen-toggle:hover {
+    background-color: var(--secondary-color);
+}
+
+.turnamen-toggle .toggle-icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.3s ease-out;
+}
+
+.turnamen-toggle.active .toggle-icon {
+    transform: rotate(45deg);
+    color: var(--accent-color);
+}
+
+.turnamen-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #fafafa;
+    padding: 0 1.2rem;
+}
+
+.turnamen-detail p {
+    margin: 0.8rem 0;
+}
+
+.turnamen-detail.active {
+    max-height: 200px;
+    padding: 1.2rem;
+}
+
+
+/* === FOOTER === */
+footer {
+    background-color: var(--primary-color); /* Biru Navy */
+    color: var(--light-text);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-size: 1.8rem;
+    margin: 0 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+footer p {
+    margin: 0.3rem 0;
+}
+
+/* === RESPONSIVE (Untuk HP) === */
+@media (max-width: 768px) {
+    body {
+        /* Sesuaikan padding-top untuk header versi mobile */
+        padding-top: 170px; /* Mungkin butuh tinggi berbeda */
+    }
+
+    nav ul {
+        /* Membuat menu jadi penuh di HP */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    nav ul li a {
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid var(--secondary-color);
+    }
+    nav ul li:last-child a {
+        border-bottom: none;
+    }
+}
